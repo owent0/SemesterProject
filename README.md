@@ -1,4 +1,6 @@
 # SemesterProject
-Web Programming semester project.
-Small social media clone of twitter.
-Tom Owen, Rithvik Mandalapu, Steve Pham, Michael Robinson
+Rowan University Spring 2017 <br />
+Web Programming Semester Project <br />
+### tWOWter
+A social media site for World of Warcraft lovers <br />
+Developers: Tom Owen, Rithvik Mandalapu, Steve Pham, Michael Robinson
