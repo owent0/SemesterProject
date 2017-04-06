@@ -7,7 +7,7 @@ DIRS = css img
 all: $(TARGETS)
 
 install: $(TARGETS)
-	@if [ ! -d $(DESTDIR) ] ; then mkdir -p $(DESTDIR); fi
+	@if [ ! -d $(DESTDIR) ] ; then mkdir -m 755 -p $(DESTDIR); fi
 	@for f in $(TARGETS)               ; \
 	do                                     \
 		/usr/bin/install -v -t $(DESTDIR) -m 444 $$f ; \

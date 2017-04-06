@@ -14,7 +14,7 @@
 
 <body>
     <div>
-        <div class="header-dark" style="background-image:url(&quot;assets/img/warlock-02_162841-800x600.jpg&quot;);background-size:auto;">
+        <div class="header-dark" style="background-image:url(&quot;assets/img/warlock.jpg&quot;);background-size:auto;">
             <nav class="navbar navbar-default navigation-clean-search">
                 <div class="container">
                     <div class="navbar-header"><a class="navbar-brand navbar-link" href="index.php">tWOWter </a>

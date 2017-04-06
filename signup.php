@@ -29,7 +29,7 @@
     </div>
     <div class="register-photo" style="color:rgb(1,1,1);background-color:rgb(23,25,27);">
         <div class="form-container">
-            <div class="image-holder" style="background-image:url(&quot;assets/img/warlock-02_162841-800x600.jpg&quot;);"></div>
+            <div class="image-holder" style="background-image:url(&quot;assets/img/warlock.jpg&quot;);"></div>
             <form method="post" style="background-color:rgb(50,57,64);">
                 <h2 class="text-center" style="color:rgb(230,231,234);"><strong>Create</strong> an account.</h2>
                 <div class="form-group">

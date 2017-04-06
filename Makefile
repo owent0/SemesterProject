@@ -14,7 +14,7 @@ all: $(TARGETS)
 
 # You might want to look up mkdir(1) to see about that -p flag.
 install: $(TARGETS)
-	@if [ ! -d $(DESTDIR) ] ; then mkdir -p $(DESTDIR); fi
+	@if [ ! -d $(DESTDIR) ] ; then mkdir -m 755 -p $(DESTDIR); fi
 	@for f in $(TARGETS)                 ; \
 	do                                     \
 		/usr/bin/install -v -t $(DESTDIR) -m 444 $$f ; \
