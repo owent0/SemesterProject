@@ -17,11 +17,11 @@
         <div class="header-dark" style="background-color:rgb(23,25,27);">
             <nav class="navbar navbar-default navigation-clean-search">
                 <div class="container">
-                    <div class="navbar-header"><a class="navbar-brand navbar-link" href="#">tWOWter </a>
+                    <div class="navbar-header"><a class="navbar-brand navbar-link" href="index.php">tWOWter </a>
                         <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
                     </div>
                     <div class="collapse navbar-collapse" id="navcol-1">
-                        <p class="navbar-text navbar-right"><a class="navbar-link login" href="login.html">Log In</a> <a class="btn btn-default action-button" role="button" href="signup.html">Sign Up</a></p>
+                        <p class="navbar-text navbar-right"><a class="navbar-link login" href="login.php">Log In</a> <a class="btn btn-default action-button" role="button" href="signup.php">Sign Up</a></p>
                     </div>
                 </div>
             </nav>
@@ -43,7 +43,7 @@
                 </div>
                 <div class="form-group">
                     <button class="btn btn-primary btn-block" type="submit" style="background-color:rgb(74,71,244);">Sign Up</button>
-                </div><a href="login.html" class="already" style="color:rgb(194,196,200);">You already have an account? Login here.</a></form>
+                </div><a href="login.php" class="already" style="color:rgb(194,196,200);">You already have an account? Login here.</a></form>
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

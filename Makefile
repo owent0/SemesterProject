@@ -4,10 +4,10 @@
 
 # These lines should be the only ones you have to change for many
 # projects.
-DESTDIR = /home/kilroy/public_html/web/Wk9.3-PHPsession
-TARGETS = login.php process.php
-SOURCES = login.php process.php
-
+DESTDIR = /home/owent0/public_html/web/Semester-Project
+TARGETS = index.php login.php signup.php
+SOURCES = index.php login.php signup.php
+DIRS = assets
 # This target is just here to be the top target in the Makefile.
 # There's nothing to compile for this one.
 all: $(TARGETS)

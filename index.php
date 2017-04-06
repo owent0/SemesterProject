@@ -17,12 +17,12 @@
         <div class="header-dark" style="background-image:url(&quot;assets/img/warlock-02_162841-800x600.jpg&quot;);background-size:auto;">
             <nav class="navbar navbar-default navigation-clean-search">
                 <div class="container">
-                    <div class="navbar-header"><a class="navbar-brand navbar-link" href="index.html">tWOWter </a>
+                    <div class="navbar-header"><a class="navbar-brand navbar-link" href="index.php">tWOWter </a>
                         <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
                     </div>
                     <div class="collapse navbar-collapse" id="navcol-1">
                         <ul class="nav navbar-nav"></ul>
-                        <p class="navbar-text navbar-right"><a class="navbar-link login" href="login.html">Log In</a> <a class="btn btn-default action-button" role="button" href="#">Sign Up</a></p>
+                        <p class="navbar-text navbar-right"><a class="navbar-link login" href="login.php">Log In</a> <a class="btn btn-default action-button" role="button" href="signup.php">Sign Up</a></p>
                     </div>
                 </div>
             </nav>
