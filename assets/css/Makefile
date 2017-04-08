@@ -3,7 +3,7 @@
 # D.Provine
 
 DESTDIR = /home/owent0/public_html/web/Semester-Project/assets/css
-TARGETS = styles.min.css
+TARGETS = styles.min.css Footer-Dark.css Header-Dark.css Login-Form-Dark.css Registration-Form-with-Photo.css
 
 all: $(TARGETS)
 
