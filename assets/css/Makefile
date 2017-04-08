@@ -1,6 +1,6 @@
-# Makefile for Units program
+# Makefile for Semester-Project css folder
 #
-# D.Provine
+# Tom Owen 2017
 
 DESTDIR = /home/owent0/public_html/web/Semester-Project/assets/css
 TARGETS = styles.min.css Footer-Dark.css Header-Dark.css Login-Form-Dark.css Registration-Form-with-Photo.css

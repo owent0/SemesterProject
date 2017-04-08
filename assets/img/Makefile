@@ -1,6 +1,6 @@
-# Makefile for Units program
+# Makefile for Semester-Project img folder
 #
-# D.Provine
+# Tom Owen 2017
 
 DESTDIR = /home/owent0/public_html/web/Semester-Project/assets/img
 TARGETS = warlock.jpg

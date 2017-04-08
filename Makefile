@@ -1,6 +1,6 @@
 # Sample Makefile for Web Programming students
 #
-# by Darren Provine, 14 September 2002
+# by Tom Owen 2017
 
 # These lines should be the only ones you have to change for many
 # projects.
@@ -8,13 +8,14 @@ DESTDIR = /home/owent0/public_html/web/Semester-Project
 TARGETS = index.php login.php signup.php
 SOURCES = index.php login.php signup.php
 DIRS = assets
+
 # This target is just here to be the top target in the Makefile.
 # There's nothing to compile for this one.
 all: $(TARGETS)
 
 # You might want to look up mkdir(1) to see about that -p flag.
 install: $(TARGETS)
-	@if [ ! -d $(DESTDIR) ] ; then mkdir -m 755 -p $(DESTDIR); fi
+	@if [ ! -d $(DESTDIR) ] ; then mkdir -p $(DESTDIR); fi
 	@for f in $(TARGETS)                 ; \
 	do                                     \
 		/usr/bin/install -v -t $(DESTDIR) -m 444 $$f ; \
