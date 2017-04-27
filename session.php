@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html style="background-color:rgb(40,45,50);">
+<html style="background-color:#282d32;">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="Author" content="Tom Owen, Rithvik Mandalapu, Steve Pham, Michael Robinson">
-    <title>tWoWter Login</title>
+    <title>tWoWter</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
@@ -19,49 +19,47 @@
 </head>
 
 <body style="background-color:rgb(40,45,50);">
-    <div style="background-color:rgb(40,45,50);">
-        <div class="header-dark" style="background-color:rgb(40,45,50);">
+    <div>
+        <div class="header-dark" style="background-size:auto;background-color:rgb(40,45,50);">
             <nav class="navbar navbar-default navigation-clean-search">
                 <div class="container">
-                    <div class="navbar-header"><a class="navbar-brand navbar-link">tWoWter <i class="fa fa-magic"></i></a>
+                    <div class="navbar-header"><a class="navbar-brand navbar-link" href="index.html">tWoWter <i class="fa fa-magic"></i></a>
                         <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
                     </div>
-                    <div class="collapse navbar-collapse" id="navcol-1"></div>
+                    <div class="collapse navbar-collapse" id="navcol-1">
+                        <ul class="nav navbar-nav"></ul>
+                        <p class="navbar-text navbar-right"><a class="navbar-link login" href="login.html">Log In / Signup</a> </p>
+                    </div>
                 </div>
             </nav>
+            <div class="container hero">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h1 class="text-center">The #1 place for WoW lovers.</h1></div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="login-clean" style="background-color:rgb(40,45,50);">
-        <form method="post">
-            <h2 class="sr-only">Login Form</h2>
-            <div class="illustration"><i class="icon ion-ios-navigate" style="color:rgb(238,9,47);"></i></div>
-            <div class="form-group">
-                <input class="form-control" type="email" name="username" placeholder="Username">
+    <div class="container">
+        <h1 style="color:#fff;">Posts: </h1>
+        <div class="row">
+            <div class="col-md-12">
+                <p class="text-center" style="font-size:18px;background-color:#fff;margin-bottom:0;">Strike now, heroes, while he is weakened! Vanquish the Deceiver! </p>
             </div>
-            <div class="form-group">
-                <input class="form-control" type="password" name="password" placeholder="Password">
+            <div class="col-md-12">
+                <p class="text-left" style="font-size:18px;background-color:#fff;color:blue;padding-left:5px;">Kalec </p>
             </div>
-            <div class="form-group">
-                <button class="btn btn-primary btn-block" type="submit" style="background-color:rgb(238,9,47);">Log In</button>
-            </div><a href="signup.html" class="forgot">Don't have an account? Sign up</a></form>
+        </div>
     </div>
-    <div class="register-photo" style="color:rgb(1,1,1);background-color:rgb(40,45,50);">
-        <div class="form-container">
-            <form method="post" style="background-color:rgb(60,78,96);">
-                <h2 class="text-center" style="color:rgb(230,231,234);"><strong>Create</strong> an account.</h2>
-                <div class="form-group">
-                    <input class="form-control" type="email" name="email" placeholder="Email">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="text" name="username" placeholder="Your awesome username">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="password" name="password" placeholder="Password">
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-primary btn-block" type="submit" style="background-color:rgb(238,9,47);">Sign Up</button>
-                </div>
-            </form>
+    <div class="container">
+        <h2 style="color:#fff;">Make a Post</h2>
+        <div class="row">
+            <div class="col-md-12" style="font-size:16px;">
+                <textarea rows="6" name="post" required="" autocomplete="off" style="width:100%;"></textarea>
+            </div>
+            <div class="col-md-1 col-md-offset-11 col-sm-offset-10 col-xs-offset-9">
+                <button class="btn btn-default" type="submit">Post </button>
+            </div>
         </div>
     </div>
     <div class="footer-dark">

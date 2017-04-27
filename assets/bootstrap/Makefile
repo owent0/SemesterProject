@@ -1,9 +1,9 @@
-# Makefile for assets of Semester Project
+# Makefile for Bootstrap folder of Semester Project
 #
 # Tom Owen
 
-DESTDIR = /home/owent0/public_html/web/Semester-Project/assets
-DIRS = bootstrap css fonts js
+DESTDIR = /home/owent0/public_html/web/Semester-Project/assets/bootstrap
+DIRS = css js
 all: $(TARGETS)
 
 install: $(TARGETS)

@@ -1,9 +1,9 @@
-# Makefile for assets of Semester Project
+# Makefile for Fonts of Semester Project
 #
 # Tom Owen
 
 DESTDIR = /home/owent0/public_html/web/Semester-Project/assets
-DIRS = bootstrap css fonts js
+TARGETS = font-awesome.min.css fontawesome-webfont.eot fontawesome-webfont.svg fontawesome-webfont.svg fontawesome-webfont.ttf fontawesome-webfont.woff fontawesome-webfont.woff2 FontAwesome.otf ionicons.eot ionicons.min.css ionicons.svg ionicons.ttf ionicons.woff
 all: $(TARGETS)
 
 install: $(TARGETS)

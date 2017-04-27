@@ -1,12 +1,12 @@
-# Sample Makefile for Web Programming students
+# Top level Makefile for Semester project
 #
 # by Tom Owen 2017
 
 # These lines should be the only ones you have to change for many
 # projects.
 DESTDIR = /home/owent0/public_html/web/Semester-Project
-TARGETS = index.php indexStyle.css
-SOURCES = index.php 
+TARGETS = index.php session.php 
+SOURCES = index.php session.php
 DIRS = assets
 
 # This target is just here to be the top target in the Makefile.

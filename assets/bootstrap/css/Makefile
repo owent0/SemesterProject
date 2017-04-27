@@ -1,14 +1,14 @@
-# Makefile for Semester-Project img folder
+# Makefile for Semester-Project bootstrp css folder
 #
 # Tom Owen 2017
 
-DESTDIR = /home/owent0/public_html/web/Semester-Project/assets/img
-TARGETS = warlock.jpg
+DESTDIR = /home/owent0/public_html/web/Semester-Project/assets/bootstrap/css
+TARGETS = bootstrap.min.css
 
 all: $(TARGETS)
 
 install: $(TARGETS)
-	@if [ ! -d $(DESTDIR) ] ; then mkdir -m 755 -p $(DESTDIR); fi
+	@if [ ! -d $(DESTDIR) ] ; then mkdir -p $(DESTDIR); fi
 	@for f in $(TARGETS)               ; \
 	do                                     \
 		/usr/bin/install -v -t $(DESTDIR) -m 444 $$f ; \

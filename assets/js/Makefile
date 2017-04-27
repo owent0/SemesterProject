@@ -1,9 +1,9 @@
-# Makefile for assets of Semester Project
+# Makefile for jQuery of Semester Project
 #
 # Tom Owen
 
 DESTDIR = /home/owent0/public_html/web/Semester-Project/assets
-DIRS = bootstrap css fonts js
+TARGETS = jquery.min.js
 all: $(TARGETS)
 
 install: $(TARGETS)
