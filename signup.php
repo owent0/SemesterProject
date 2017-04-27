@@ -34,6 +34,12 @@
             </nav>
         </div>
     </div>
+    
+<?php
+    if ( isset($_GET['email'])   &&  !empty($_GET['email'])   && 
+     isset($_GET['password'])  &&  !empty($_GET['password'])     ) {
+?>
+
     <div class="register-photo" style="color:rgb(1,1,1);background-color:rgb(40,45,50);">
         <div class="form-container">
             <div class="image-holder" style="background-image:url(&quot;assets/img/warlock.jpg&quot;);"></div>
