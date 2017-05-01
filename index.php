@@ -19,6 +19,10 @@
 </head>
 
 <body style="background-color:rgb(40,45,50);">
+    <?php
+        require_once('/home/owent0/source_html/web/Semester-Project/Connect.php');
+        $dbh = ConnectDB();
+    ?>
     <div style="background-color:rgb(40,45,50);">
         <div class="header-dark" style="background-color:rgb(40,45,50);">
             <nav class="navbar navbar-default navigation-clean-search">
@@ -43,23 +47,54 @@
             </div>
             <div class="form-group">
                 <button class="btn btn-primary btn-block" type="submit" style="background-color:rgb(238,9,47);">Log In</button>
-            </div><a href="signup.html" class="forgot">Don't have an account? Sign up</a></form>
+            </div>
+        </form>
     </div>
+
+
     <div class="register-photo" style="color:rgb(1,1,1);background-color:rgb(40,45,50);">
         <div class="form-container">
-            <form method="post" style="background-color:rgb(60,78,96);">
+            <form style="background-color:rgb(60,78,96);">
                 <h2 class="text-center" style="color:rgb(230,231,234);"><strong>Create</strong> an account.</h2>
                 <div class="form-group">
-                    <input class="form-control" type="email" name="email" placeholder="Email">
+                    <input class="form-control" type="email" name="createEmail" placeholder="Email" required>
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="text" name="username" placeholder="Your awesome username">
+                    <input class="form-control" type="text" name="createUsername" placeholder="Your awesome username" required>
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="password" name="password" placeholder="Password">
+                    <input class="form-control" type="password" name="createPassword" placeholder="Password" required>
                 </div>
                 <div class="form-group">
                     <button class="btn btn-primary btn-block" type="submit" style="background-color:rgb(238,9,47);">Sign Up</button>
+                    
+    <?php
+        if( isset($_GET['createEmail']) && !empty($_GET['createEmail']) &&
+            isset($_GET['createUsername']) && !empty($_GET['createUsername']) &&
+            isset($_GET['createPassword']) && !empty($_GET['createPassword']) ) {
+            
+            try {
+                
+                $email = $_GET['createEmail'];
+                $username = $_GET['createUsername'];
+                $password = $_GET['createPassword'];
+                
+                $query = "INSERT INTO users (email, username, password) ".
+                    "VALUES ('$email', '$username', '$password')";
+                $stmt = $dbh->prepare($query);
+                
+
+                $stmt->execute();
+                $stmt = null;
+
+            } catch(PDOException $e) {
+                die('PDO error inserting(): '. $e->getMessage());
+            }
+        } else {
+            echo "<p style='color: red;'>Nothing to insert</p>";
+        }
+
+    ?>
                 </div>
             </form>
         </div>

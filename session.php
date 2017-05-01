@@ -19,6 +19,10 @@
 </head>
 
 <body style="background-color:rgb(40,45,50);">
+    <?php
+        require_once('/home/owent0/source_html/web/Semester-Project/Connect.php');
+        $dbh = ConnectDB();
+    ?>
     <div>
         <div class="header-dark" style="background-size:auto;background-color:rgb(40,45,50);">
             <nav class="navbar navbar-default navigation-clean-search">
@@ -28,7 +32,7 @@
                     </div>
                     <div class="collapse navbar-collapse" id="navcol-1">
                         <ul class="nav navbar-nav"></ul>
-                        <p class="navbar-text navbar-right"><a class="navbar-link login" href="login.html">Log In / Signup</a> </p>
+                        <p class="navbar-text navbar-right"><a class="navbar-link login" href="index.php">Log In / Signup</a> </p>
                     </div>
                 </div>
             </nav>
@@ -44,11 +48,34 @@
         <h1 style="color:#fff;">Posts: </h1>
         <div class="row">
             <div class="col-md-12">
+                <p class="text-left" style="color:red; font-size:20px; background-color:#fff;margin-bottom:0;">A message from our sponsor:</p>
                 <p class="text-center" style="font-size:18px;background-color:#fff;margin-bottom:0;">Strike now, heroes, while he is weakened! Vanquish the Deceiver! </p>
             </div>
             <div class="col-md-12">
                 <p class="text-left" style="font-size:18px;background-color:#fff;color:blue;padding-left:5px;">Kalec </p>
             </div>
+            <?php
+                try {
+                    $query = "SELECT * FROM posts JOIN users ON (posts.user_id = users.user_id)";
+                    $stmt = $dbh->prepare($query);
+
+                    $stmt->execute();
+                    $posts = $stmt->fetchAll(PDO::FETCH_OBJ);
+                    $stmt = null;
+
+                    foreach ($posts as $post) {
+                        echo "<div class='col-md-12'>";
+                        echo "  <p class='text-center' style='font-size18px;background-color:#fff;margin-bottom:0;'>$post->text</p>";
+                        echo "</div>";
+
+                        echo "<div class='col-md-12'>";
+                        echo "  <p class='text-left' style='font-size18px;background-color:#fff;color:blue;padding-left:5px;'>$post->username</p>";
+                        echo "</div>";
+                    }
+                } catch(PDOException $e) {
+                    die ('PDO error in Getting Posts' . $e->getMessage());
+                }         
+            ?>
         </div>
     </div>
     <div class="container">

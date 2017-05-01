@@ -2,7 +2,7 @@
 #
 # Tom Owen
 
-DESTDIR = /home/owent0/public_html/web/Semester-Project/assets
+DESTDIR = /home/owent0/public_html/web/Semester-Project/assets/js
 TARGETS = jquery.min.js
 all: $(TARGETS)
 
