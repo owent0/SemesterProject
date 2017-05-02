@@ -1,3 +1,13 @@
+<?php
+    // The session for tWoWter 
+    // The users can see all the posts and make new posts
+    // Tom Owen, Rithvik Mandalapu, Steve Pham, Michael Robinson
+    session_start();
+    if(empty($_SESSION['userid'])) {
+        header("Location: index.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html style="background-color:#282d32;">
 
@@ -32,7 +42,7 @@
                     </div>
                     <div class="collapse navbar-collapse" id="navcol-1">
                         <ul class="nav navbar-nav"></ul>
-                        <p class="navbar-text navbar-right"><a class="navbar-link login" href="index.php">Log In / Signup</a> </p>
+                        <p class="navbar-text navbar-right"><a class="navbar-link login" href="logout.php">Logout</a> </p>
                     </div>
                 </div>
             </nav>
@@ -44,6 +54,7 @@
             </div>
         </div>
     </div>
+    
     <div class="container">
         <h1 style="color:#fff;">Posts: </h1>
         <div class="row">
@@ -64,13 +75,13 @@
                     $stmt = null;
 
                     foreach ($posts as $post) {
-                        echo "<div class='col-md-12'>";
-                        echo "  <p class='text-center' style='font-size18px;background-color:#fff;margin-bottom:0;'>$post->text</p>";
-                        echo "</div>";
+                        echo "<div class='col-md-12'> \n";
+                        echo "  <p class='text-center' style='font-size18px;background-color:#fff;margin-bottom:0;'>$post->text</p> \n";
+                        echo "</div> \n";
 
-                        echo "<div class='col-md-12'>";
-                        echo "  <p class='text-left' style='font-size18px;background-color:#fff;color:blue;padding-left:5px;'>$post->username</p>";
-                        echo "</div>";
+                        echo "<div class='col-md-12'> \n";
+                        echo "  <p class='text-left' style='font-size18px;background-color:#fff;color:blue;padding-left:5px;'>$post->username</p> \n";
+                        echo "</div> \n";
                     }
                 } catch(PDOException $e) {
                     die ('PDO error in Getting Posts' . $e->getMessage());
@@ -78,15 +89,40 @@
             ?>
         </div>
     </div>
+
     <div class="container">
         <h2 style="color:#fff;">Make a Post</h2>
-        <div class="row">
-            <div class="col-md-12" style="font-size:16px;">
-                <textarea rows="6" name="post" required="" autocomplete="off" style="width:100%;"></textarea>
-            </div>
-            <div class="col-md-1 col-md-offset-11 col-sm-offset-10 col-xs-offset-9">
-                <button class="btn btn-default" type="submit">Post </button>
-            </div>
+        <div class="form-container">
+            <form method="post">
+                <div class="form-group" style="font-size:16px;">
+                    <textarea rows="6" name="post" required="" autocomplete="off" style="width:100%;"></textarea>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-default" type="submit">Post </button>
+                </div>
+                <?php
+                    if( isset($_POST['post']) && !empty($_POST['post'])) {
+            
+                    try {
+                
+                        $post = $_POST['post'];
+                        $userid = $_SESSION['userid'];
+                        $query = "INSERT INTO posts (user_id, text) ".
+                                "VALUES ('$userid', '$post')";
+                        $stmt = $dbh->prepare($query);
+
+                        $stmt->execute();
+                        $stmt = null;
+                        header("Location: session.php");
+                    } catch(PDOException $e) {
+                        die('PDO error inserting(): '. $e->getMessage());
+                        echo "<p>Could not make your post</p> \n";
+                    }
+                    } else {
+                        echo "<p style='color: red;'>Need to fill out the text to make a post</p> \n";
+                    }
+                ?>
+            </form>
         </div>
     </div>
     <div class="footer-dark">

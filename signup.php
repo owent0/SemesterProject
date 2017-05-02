@@ -1,69 +1,12 @@
 <?php
-// index.php Logging in for tWoWter
+// signup.php Signing up for tWoWter
 // Tom Owen Rithvik Mandalapu Steve Pham Michael Robinson
 
 session_start();
+$_SESSION['time'] = time();
 
 ?>
 
-<?php
-    require_once('/home/owent0/source_html/web/Semester-Project/Connect.php');
-    $dbh = ConnectDB();
-        
-    $_SESSION['userID'] = 0;
-?>
-
-<?php
-
-    if(isset($_POST['login']) &&
-        isset($_POST['username']) && !empty($_POST['username']) &&
-        isset($_POST['password']) && !empty($_POST['password']) ) {
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-        $_SESSION['userid'] = 0;
-            try {
-                
-                $username = $_POST['username'];
-                $pass = $_POST['password'];
-                
-                $query = "SELECT * FROM users WHERE username='$username' AND password='$pass'";
-                $stmt = $dbh->prepare($query);
-                
-                $stmt->execute();
-
-                $users = $stmt->fetchAll(PDO::FETCH_OBJ);
-
-                $rows = $stmt->rowCount();
-                $stmt = null;
-                if($rows > 0) {
-                    $query = "SELECT user_id FROM users WHERE username='$username'";
-                    $stmt = $dbh->prepare($query);
-
-                    $stmt->execute();
-
-                    $use = $stmt->fetchAll(PDO::FETCH_OBJ);
-                    
-                    $userid = 0;
-
-                    foreach($use as $user) {
-                        $userid = $user->user_id;
-                    }
-                    $_SESSION['userid'] = $userid;
-                    $_SESSION['username'] = $username;
-                    $stmt = null;
-
-                    header("Location:session.php");
-                } 
-                else {
-                    echo "<p style='color: red;'>Couldn't log you in</p> \n";
-                }
-
-            } catch(PDOException $e) {
-                die('PDO error inserting(): '. $e->getMessage());
-                echo "<p>Could not sign you up</p> \n";
-            }
-    }
-?>
 <!DOCTYPE html>
 <html style="background-color:rgb(40,45,50);">
 
@@ -71,7 +14,7 @@ session_start();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="Author" content="Tom Owen, Rithvik Mandalapu, Steve Pham, Michael Robinson">
-    <title>tWoWter Login</title>
+    <title>tWoWter Sign up</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
@@ -85,6 +28,13 @@ session_start();
 </head>
 
 <body style="background-color:rgb(40,45,50);">
+    <?php
+        require_once('/home/owent0/source_html/web/Semester-Project/Connect.php');
+        $dbh = ConnectDB();
+        
+        $_SESSION['userID'] = 0;
+        $_SESSION['username'] = '';
+    ?>
 
     <div style="background-color:rgb(40,45,50);">
         <div class="header-dark" style="background-color:rgb(40,45,50);">
@@ -94,29 +44,75 @@ session_start();
                         <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
                     </div>
                     <div class="collapse navbar-collapse" id="navcol-1">
-                        <p class="navbar-text navbar-right"><a class="navbar-link login" href="signup.php">Sign up</a> </p>
+                        <p class="navbar-text navbar-right"><a class="navbar-link login" href="index.php">Login </a> </p>
                     </div>
                 </div>
             </nav>
         </div>
     </div>
 
-    <div class="login-clean" style="background-color:rgb(40,45,50);">
-        <form action="" method="post">
-            <h2 class="sr-only">Login Form</h2>
-            <div class="illustration"><i class="icon ion-ios-navigate" style="color:rgb(238,9,47);"></i></div>
-            <div class="form-group">
-                <input class="form-control" type="text" name="username" placeholder="Username" required>
-            </div>
-            <div class="form-group">
-                <input class="form-control" type="password" name="password" placeholder="Password" required>
-            </div>
-            <div class="form-group">
-                <button class="btn btn-primary btn-block" type="submit" name="login" style="background-color:rgb(238,9,47);">Log In</button>
-            </div>
-        </form>
-    </div>
+    <div class="register-photo" style="color:rgb(1,1,1);background-color:rgb(40,45,50);">
+        <div class="form-container">
+            <form style="background-color:rgb(60,78,96);">
+                <h2 class="text-center" style="color:rgb(230,231,234);"><strong>Create</strong> an account.</h2>
+                <div class="form-group">
+                    <input class="form-control" type="email" name="createEmail" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="createUsername" placeholder="Your awesome username" required>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="password" name="createPassword" placeholder="Password" required>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary btn-block" type="submit" style="background-color:rgb(238,9,47);">Sign Up</button>
+                    
+                    <?php
+                        if( isset($_GET['createEmail']) && !empty($_GET['createEmail']) &&
+                            isset($_GET['createUsername']) && !empty($_GET['createUsername']) &&
+                            isset($_GET['createPassword']) && !empty($_GET['createPassword']) ) {
+            
+                            try {
+                
+                                $email = $_GET['createEmail'];
+                                $username = $_GET['createUsername'];
+                                $password = $_GET['createPassword'];
+                
+                                $query = "SELECT * FROM users WHERE username='$username' OR email='$email'";
+                                $stmt = $dbh->prepare($query);
+                
+                                $stmt->execute();
 
+                                $users = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+                                $rows = $stmt->rowCount();
+                                $stmt = null;
+                                if($rows > 0) {
+                                    echo "<p style='color: red;'>Someone has already took that username or email address</p> \n";
+                                }    
+                                else {
+                                    $query = "INSERT INTO users (email, username, password) ".
+                                            "VALUES ('$email', '$username', '$password')";
+                                    $stmt = $dbh->prepare($query);
+
+                                    $stmt->execute();
+                                    $stmt = null;
+                                    header("Location: index.php");
+                                }
+
+                            } catch(PDOException $e) {
+                                die('PDO error inserting(): '. $e->getMessage());
+                                echo "<p>Could not sign you up</p> \n";
+                            }
+                            } else {
+                                echo "<p style='color: red;'>Need to fill out info to sign up</p> \n";
+                            }
+
+                    ?>
+                </div>
+            </form>
+        </div>
+    </div>
     <div class="footer-dark">
         <footer>
             <div class="container">

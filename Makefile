@@ -5,8 +5,8 @@
 # These lines should be the only ones you have to change for many
 # projects.
 DESTDIR = /home/owent0/public_html/web/Semester-Project
-TARGETS = index.php session.php 
-SOURCES = index.php session.php
+TARGETS = index.php session.php signup.php logout.php
+SOURCES = index.php session.php signup.php logout.php
 DIRS = assets
 
 # This target is just here to be the top target in the Makefile.
