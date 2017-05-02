@@ -40,10 +40,10 @@
             <h2 class="sr-only">Login Form</h2>
             <div class="illustration"><i class="icon ion-ios-navigate" style="color:rgb(238,9,47);"></i></div>
             <div class="form-group">
-                <input class="form-control" type="email" name="username" placeholder="Username">
+                <input class="form-control" type="email" name="username" placeholder="Username" required>
             </div>
             <div class="form-group">
-                <input class="form-control" type="password" name="password" placeholder="Password">
+                <input class="form-control" type="password" name="password" placeholder="Password" required>
             </div>
             <div class="form-group">
                 <button class="btn btn-primary btn-block" type="submit" style="background-color:rgb(238,9,47);">Log In</button>
@@ -79,19 +79,34 @@
                 $username = $_GET['createUsername'];
                 $password = $_GET['createPassword'];
                 
-                $query = "INSERT INTO users (email, username, password) ".
-                    "VALUES ('$email', '$username', '$password')";
+                $query = "SELECT * FROM users WHERE username='$username' OR email='$email'";
                 $stmt = $dbh->prepare($query);
                 
-
                 $stmt->execute();
+
+                $users = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+                $rows = $stmt->rowCount();
                 $stmt = null;
+                if($rows > 0) {
+                    echo "<p style='color: red;'>Someone has already took that username or email address</p>";
+                } 
+                else {
+                    $query = "INSERT INTO users (email, username, password) ".
+                            "VALUES ('$email', '$username', '$password')";
+                    $stmt = $dbh->prepare($query);
+
+                    $stmt->execute();
+                    $stmt = null;
+                    echo "<p style='color: red;'>You're signed up now you can log in!</p>";
+                }
 
             } catch(PDOException $e) {
                 die('PDO error inserting(): '. $e->getMessage());
+                echo "<p>Could not sign you up</p>";
             }
         } else {
-            echo "<p style='color: red;'>Nothing to insert</p>";
+            echo "<p style='color: red;'>Need to fill out info to sign up</p>";
         }
 
     ?>
